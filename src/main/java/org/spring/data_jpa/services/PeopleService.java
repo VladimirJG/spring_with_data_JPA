@@ -43,4 +43,27 @@ public class PeopleService {
     public void delete(int id) {
         peopleRepository.deleteById(id);
     }
+
+    /*public List<Person> findByName(String name) {
+        return peopleRepository.findByName(name);
+    }
+
+    public List<Person> namesOrderByAge(String name) {
+        return peopleRepository.findByNameOrderByAge(name);
+    }
+
+    public List<Person> findPersonsByEmail(String email) {
+        return peopleRepository.findByEmail(email);
+    }
+
+    public List<Person> findPersonsByStartingString(String startingString) {
+        return peopleRepository.findByNameStartingWith(startingString);
+    }
+
+    public List<Person> findPersonsByNameOrEmail(String name, String email) {
+        return peopleRepository.findByNameOrEmail(name, email);
+    }*/
+    public void test(){
+        System.out.println("Testing here with debug. Inside Hibernate Transaction");
+    }
 }

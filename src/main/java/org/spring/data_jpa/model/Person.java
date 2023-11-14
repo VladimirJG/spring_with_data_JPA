@@ -3,6 +3,8 @@ package org.spring.data_jpa.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Person")
 public class Person {
@@ -25,8 +27,8 @@ public class Person {
     @Email(message = "Email should be valid")
     @Column(name = "email")
     private String email;
-   /* @Pattern(regexp = "[A-Z]\\w+, [A-Z]\\w+, \\d{6}", message = "Your address should be in this format: Country, City, Postal Code(6 digits)")
-    private String address;*/
+    @OneToMany(mappedBy = "owner")
+    private List<Item> itemList;
 
     public Person() {
     }
@@ -34,7 +36,6 @@ public class Person {
     public Person(String name, int age, String email) {
         this.name = name;
         this.age = age;
-
         this.email = email;
     }
 
@@ -68,6 +69,14 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
     }
 
     @Override

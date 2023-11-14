@@ -1,6 +1,7 @@
 package org.spring.data_jpa.controllers;
 
 import jakarta.validation.Valid;
+import org.spring.data_jpa.services.ItemService;
 import org.spring.data_jpa.services.PeopleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,16 +15,25 @@ import org.spring.data_jpa.model.Person;
 @RequestMapping("/people")
 public class PeopleController {
     private final PeopleService peopleService;
+    private final ItemService itemService;
 
     @Autowired
-    public PeopleController(PeopleService peopleService) {
+    public PeopleController(PeopleService peopleService, ItemService itemService) {
         this.peopleService = peopleService;
+        this.itemService = itemService;
     }
 
 
     @GetMapping
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
+
+        itemService.findByItemName("Cigarettes");
+        itemService.findByOwner(peopleService.findAll().get(0));
+
+        peopleService.test();
+
+
         return "people/index";
     }
 
