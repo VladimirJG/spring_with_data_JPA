@@ -28,10 +28,10 @@ public class PeopleController {
     public String index(Model model) {
         model.addAttribute("people", peopleService.findAll());
 
-        itemService.findByItemName("Cigarettes");
+        /*itemService.findByItemName("Cigarettes");
         itemService.findByOwner(peopleService.findAll().get(0));
 
-        peopleService.test();
+        peopleService.test();*/
 
 
         return "people/index";
