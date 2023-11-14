@@ -99,7 +99,7 @@ public class SpringConfig implements WebMvcConfigurer {
     }*/
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
         bean.setDataSource(dataSource());
         bean.setPackagesToScan("org.spring.data_jpa.model");
@@ -120,7 +120,7 @@ public class SpringConfig implements WebMvcConfigurer {
     @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
+        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return transactionManager;
     }
 }
