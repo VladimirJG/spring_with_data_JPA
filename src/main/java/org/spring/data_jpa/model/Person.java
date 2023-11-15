@@ -38,6 +38,8 @@ public class Person {
     @Column(name = "create_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+    @Enumerated(EnumType.STRING)
+    private Debt debt;
 
     public Person() {
     }
@@ -102,6 +104,14 @@ public class Person {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Debt getDebt() {
+        return debt;
+    }
+
+    public void setDebt(Debt debt) {
+        this.debt = debt;
     }
 
     @Override

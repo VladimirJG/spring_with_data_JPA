@@ -1,5 +1,6 @@
 package org.spring.data_jpa.services;
 
+import org.spring.data_jpa.model.Debt;
 import org.spring.data_jpa.model.Person;
 import org.spring.data_jpa.repositories.PeopleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class PeopleService {
     @Transactional
     public void save(Person person) {
         person.setCreatedAt(new Date());
+        person.setDebt(Debt.NonDebtor);
         peopleRepository.save(person);
     }
 
